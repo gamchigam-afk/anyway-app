@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101114">
+<meta name="description" content="Explore everything created by Anyway Studio.">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ANYWAY">
+<title>ANYWAY — App</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root{
+ --bg:#101114;
+ --panel:#191b20;
+ --panel2:#22252b;
+ --text:#f4f4f2;
+ --muted:#858891;
+ --line:#2b2e35;
+ --accent:#d9ff65;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:'DM Sans','Noto Sans KR',sans-serif;
+ padding-bottom:100px;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.app{max-width:520px;margin:auto;min-height:100vh}
+header{
+ padding:24px 22px 15px;
+ display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-size:25px;font-weight:800;letter-spacing:-1.5px}
+.logo span{color:var(--accent)}
+.header-right{
+ font-size:10px;color:var(--muted);letter-spacing:2px
+}
+main{padding:5px 20px}
+.page{display:none;animation:fade .25s ease}
+.page.active{display:block}
+@keyframes fade{
+ from{opacity:0;transform:translateY(8px)}
+ to{opacity:1;transform:none}
+}
+.eyebrow{
+ font-size:10px;color:var(--muted);
+ letter-spacing:2px;font-weight:700
+}
+.hero{padding:30px 2px 27px}
+.hero h1{
+ font-size:43px;line-height:1.05;
+ letter-spacing:-2.8px;margin:13px 0;font-weight:800
+}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:13px;color:var(--muted);line-height:1.8}
+.feature{
+ border:1px solid #34383f;border-radius:20px;
+ min-height:185px;padding:22px;position:relative;overflow:hidden;
+ background:linear-gradient(135deg,#252a30,#17191e)
+}
+.feature:after{
+ content:"A";position:absolute;right:12px;bottom:-48px;
+ font-size:190px;font-weight:800;color:#ffffff08
+}
+.feature .eyebrow{color:var(--accent)}
+.feature h2{font-size:27px;letter-spacing:-1px;margin:14px 0 7px}
+.feature p{font-size:12px;color:#a8abb2;margin:0}
+.feature button{
+ margin-top:22px;border:0;border-radius:30px;
+ padding:10px 16px;background:var(--accent);
+ color:#111;font-size:11px;font-weight:800
+}
+.section-head{
+ display:flex;justify-content:space-between;
+ align-items:center;margin:29px 2px 14px
+}
+.section-head h3{font-size:17px;margin:0;letter-spacing:-.5px}
+.section-head span{font-size:10px;color:var(--muted);letter-spacing:1px}
+.project-list{display:grid;gap:11px}
+.project{
+ background:var(--panel);border:1px solid var(--line);
+ border-radius:15px;padding:14px;
+ display:flex;align-items:center;gap:12px;min-width:0
+}
+.project-icon{
+ width:49px;height:49px;border-radius:13px;
+ display:grid;place-items:center;font-size:21px;
+ font-weight:800;flex-shrink:0;background:#292d32;color:var(--accent)
+}
+.project-info{flex:1;min-width:0}
+.project-info h4{font-size:13px;margin:0 0 5px}
+.project-info p{font-size:10px;color:var(--muted);margin:0;line-height:1.5}
+.project-meta{font-size:9px;color:var(--muted);margin-top:7px}
+.open{
+ border:1px solid #444850;background:transparent;color:white;
+ padding:8px 10px;border-radius:9px;font-size:9px;white-space:nowrap
+}
+.favorite{border:0;background:none;color:#777;font-size:19px;padding:3px}
+.favorite.on{color:var(--accent)}
+.search{
+ width:100%;padding:14px 16px;border-radius:12px;
+ background:var(--panel);border:1px solid var(--line);
+ color:white;outline:none;margin:14px 0
+}
+.search:focus{border-color:var(--accent)}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 15px}
+.filter{
+ border:1px solid var(--line);background:var(--panel);
+ color:var(--muted);border-radius:30px;padding:8px 14px;
+ font-size:11px;white-space:nowrap
+}
+.filter.active{background:var(--accent);color:#111;border-color:var(--accent)}
+.empty{
+ text-align:center;padding:40px 15px;color:var(--muted);
+ font-size:12px;line-height:2
+}
+.comic-box{
+ background:var(--panel);border:1px solid var(--line);
+ border-radius:18px;padding:20px;margin-top:15px
+}
+.comic-art{
+ height:170px;border-radius:12px;
+ background:linear-gradient(145deg,#34302c,#18191d);
+ display:grid;place-items:center;font-size:65px;margin-bottom:18px
+}
+.comic-box h3{margin:0 0 8px;font-size:20px}
+.comic-box p{font-size:12px;color:var(--muted);line-height:1.8}
+.update{
+ border-left:1px solid #454a51;
+ margin:22px 0 22px 7px;padding-left:19px;position:relative
+}
+.update:before{
+ content:"";position:absolute;left:-4px;top:3px;
+ width:7px;height:7px;border-radius:50%;background:var(--accent)
+}
+.update time{font-size:10px;color:var(--muted)}
+.update h3{font-size:15px;margin:8px 0}
+.update p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}
+.bottom-nav{
+ position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+ width:min(520px,100%);
+ padding:12px 8px calc(15px + env(safe-area-inset-bottom));
+ background:#17191eeb;backdrop-filter:blur(18px);
+ border-top:1px solid var(--line);
+ display:flex;justify-content:space-around;z-index:10
+}
+.nav-btn{
+ border:0;background:none;color:#777d86;
+ display:flex;flex-direction:column;align-items:center;gap:5px;
+ font-size:9px;min-width:52px
+}
+.nav-btn b{font-size:19px;font-weight:500}
+.nav-btn.active{color:var(--accent)}
+footer{
+ text-align:center;color:#555a63;font-size:9px;
+ letter-spacing:1.5px;padding:35px 0
+}
+.install-guide{
+ display:none;background:#242a22;border:1px solid #46523c;
+ border-radius:13px;padding:15px;margin-top:20px
+}
+.install-guide.show{display:block}
+.install-guide p{font-size:12px;line-height:1.8;color:#d0d5c9}
+.install-guide button{
+ border:0;background:var(--accent);border-radius:20px;
+ padding:8px 13px;font-size:10px;font-weight:700
+}
+@media(min-width:700px){
+ body{padding-top:20px}
+ .app{border:1px solid var(--line);border-radius:20px;overflow:hidden}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<header>
+ <div class="logo">ANYWAY<span>.</span></div>
+ <div class="header-right">STUDIO APP</div>
+</header>
+
+<main>
+
+<section class="page active" id="home">
+ <div class="hero">
+  <div class="eyebrow">WELCOME TO ANYWAY</div>
+  <h1>Things made<br><span>by Anyway.</span></h1>
+  <p>Explore projects, experiments and stories<br>created by Anyway Studio.</p>
+ </div>
+
+ <div class="feature">
+  <div class="eyebrow">FEATURED PROJECT</div>
+  <h2>THEME RNG</h2>
+  <p>A world of themes. One roll can change everything.</p>
+  <button onclick="openProject('theme')">EXPLORE PROJECT ↗</button>
+ </div>
+
+ <div class="section-head">
+  <h3>Selected Works</h3><span>COLLECTION</span>
+ </div>
+ <div class="project-list" id="homeProjects"></div>
+
+ <div class="section-head">
+  <h3>Latest Updates</h3><span>WHAT'S NEW</span>
+ </div>
+ <div id="homeUpdates"></div>
+</section>
+
+<section class="page" id="projects">
+ <div class="hero">
+  <div class="eyebrow">THE COLLECTION</div>
+  <h1>Our<br><span>Projects.</span></h1>
+  <p>Everything created and developed by Anyway.</p>
+ </div>
+ <input class="search" id="search" placeholder="⌕  프로젝트 검색..." oninput="renderProjects()">
+ <div class="filters">
+  <button class="filter active" onclick="setFilter('all',this)">ALL</button>
+  <button class="filter" onclick="setFilter('game',this)">GAMES</button>
+  <button class="filter" onclick="setFilter('tool',this)">TOOLS</button>
+  <button class="filter" onclick="setFilter('other',this)">OTHERS</button>
+ </div>
+ <div class="project-list" id="allProjects"></div>
+</section>
+
+<section class="page" id="comics">
+ <div class="hero">
+  <div class="eyebrow">ANYWAY COMICS</div>
+  <h1>Stories<br><span>without words.</span></h1>
+  <p>Characters and stories from Anyway Studio.</p>
+ </div>
+ <div class="comic-box">
+  <div class="comic-art">✦</div>
+  <div class="eyebrow">ORIGINAL COMICS</div>
+  <h3>ANYWAY COMICS</h3>
+  <p>배고파와 모찌고파의 이야기.<br>
+  언어를 몰라도 그림만으로 즐길 수 있는 오리지널 만화.</p>
+  <button class="open" onclick="openComic()">READ COMICS ↗</button>
+ </div>
+</section>
+
+<section class="page" id="updates">
+ <div class="hero">
+  <div class="eyebrow">STUDIO LOG</div>
+  <h1>What's<br><span>New?</span></h1>
+  <p>News, releases and development logs.</p>
+ </div>
+ <div id="allUpdates"></div>
+</section>
+
+<section class="page" id="favorites">
+ <div class="hero">
+  <div class="eyebrow">YOUR COLLECTION</div>
+  <h1>Saved<br><span>Works.</span></h1>
+  <p>즐겨찾기한 프로젝트를 모아볼 수 있어.</p>
+ </div>
+ <div class="project-list" id="favoriteProjects"></div>
+</section>
+
+<div class="install-guide" id="installGuide">
+ <strong>INSTALL ANYWAY</strong>
+ <p id="installText"></p>
+ <button onclick="hideInstallGuide()">확인</button>
+</div>
+
+<footer>ANYWAY STUDIO · ALL RIGHTS RESERVED</footer>
+</main>
+
+<nav class="bottom-nav">
+ <button class="nav-btn active" onclick="showPage('home',this)"><b>⌂</b>HOME</button>
+ <button class="nav-btn" onclick="showPage('projects',this)"><b>▦</b>PROJECTS</button>
+ <button class="nav-btn" onclick="showPage('comics',this)"><b>▤</b>COMICS</button>
+ <button class="nav-btn" onclick="showPage('updates',this)"><b>◷</b>UPDATES</button>
+ <button class="nav-btn" onclick="showPage('favorites',this)"><b>♡</b>SAVED</button>
+</nav>
+
+</div>
+
+<script>
+const projects = [
+ {
+  id:'coin',
+  name:'CoinLab',
+  desc:'가상의 코인을 운용하는 시뮬레이션',
+  type:'tool',
+  icon:'₵',
+  status:'RELEASED',
+  url:'https://gamchigam-afk.github.io/coinlab/'
+ },
+ {
+  id:'theme',
+  name:'THEME RNG',
+  desc:'확률로 만나는 새로운 테마의 세계',
+  type:'game',
+  icon:'◈',
+  status:'BETA',
+  url:'https://gamchigam-afk.github.io/THEME-RNG/'
+ },
+ {
+  id:'hub',
+  name:'WEB HUB',
+  desc:'Anyway 프로젝트의 통합 허브',
+  type:'other',
+  icon:'⌘',
+  status:'RELEASED',
+  url:'https://gamchigam-afk.github.io/web-hub/'
+ },
+ {
+  id:'dungeon',
+  name:'1분 던전',
+  desc:'던전 탐험과 무기 제작 프로젝트',
+  type:'game',
+  icon:'⚔',
+  status:'IN DEVELOPMENT',
+  url:''
+ },
+ {
+  id:'gravity',
+  name:'Gravity Ball',
+  desc:'중력 기반의 게임 실험',
+  type:'game',
+  icon:'●',
+  status:'EXPERIMENT',
+  url:''
+ },
+ {
+  id:'comics',
+  name:'ANYWAY COMICS',
+  desc:'배고파와 모찌고파의 오리지널 코믹스',
+  type:'other',
+  icon:'✦',
+  status:'COMING SOON',
+  url:''
+ }
+];
+
+const updates = [
+ {
+  date:'2026 · APP CONCEPT',
+  title:'ANYWAY APP — First Look',
+  description:'스튜디오의 작품을 모아볼 수 있는 앱 프로토타입.'
+ },
+ {
+  date:'IN DEVELOPMENT',
+  title:'ANYWAY COMICS',
+  description:'배고파와 모찌고파의 오리지널 코믹스 프로젝트.'
+ }
+];
+
+let filter='all';
+let favorites=[];
+
+try{
+ favorites=JSON.parse(localStorage.getItem('anywayFavorites')||'[]');
+ if(!Array.isArray(favorites))favorites=[];
+}catch(e){favorites=[]}
+
+function card(p){
+ const saved=favorites.includes(p.id);
+ return `
+ <article class="project">
+  <div class="project-icon">${p.icon}</div>
+  <div class="project-info">
+   <h4>${p.name}</h4>
+   <p>${p.desc}</p>
+   <div class="project-meta">${p.status}</div>
+  </div>
+  <button class="favorite ${saved?'on':''}"
+   onclick="toggleFavorite('${p.id}')">${saved?'★':'☆'}</button>
+  <button class="open"
+   onclick="openProject('${p.id}')">${p.url?'OPEN ↗':'SOON'}</button>
+ </article>`;
+}
+
+function updateCard(u){
+ return `
+ <div class="update">
+  <time>${u.date}</time>
+  <h3>${u.title}</h3>
+  <p>${u.description}</p>
+ </div>`;
+}
+
+function renderHome(){
+ document.getElementById('homeProjects').innerHTML=
+ projects.slice(0,3).map(card).join('');
+ document.getElementById('homeUpdates').innerHTML=
+ updates.slice(0,1).map(updateCard).join('');
+}
+
+function renderProjects(){
+ const q=(document.getElementById('search').value||'').toLowerCase();
+ const list=projects.filter(p=>
+  (filter==='all'||p.type===filter)&&
+  (p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q))
+ );
+ document.getElementById('allProjects').innerHTML=
+ list.length?list.map(card).join():'<div class="empty">검색 결과가 없어.</div>';
+}
+
+function renderFavorites(){
+ const list=projects.filter(p=>favorites.includes(p.id));
+ document.getElementById('favoriteProjects').innerHTML=
+ list.length?list.map(card).join(''):
+ '<div class="empty">아직 저장한 작품이 없어.<br>프로젝트 옆의 ☆를 눌러 저장해 봐.</div>';
+}
+
+function toggleFavorite(id){
+ favorites=favorites.includes(id)?
+ favorites.filter(x=>x!==id):[...favorites,id];
+
+ try{
+  localStorage.setItem('anywayFavorites',JSON.stringify(favorites));
+ }catch(e){}
+
+ renderHome();
+ renderProjects();
+ renderFavorites();
+}
+
+function setFilter(value,btn){
+ filter=value;
+ document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');
+ renderProjects();
+}
+
+function showPage(id,btn){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+ renderFavorites();
+}
+
+function openProject(id){
+ const p=projects.find(x=>x.id===id);
+ if(p?.url)window.open(p.url,'_blank');
+ else alert('아직 공개되지 않은 프로젝트입니다.');
+}
+
+function openComic(){
+ alert('코믹스 감상 페이지 주소가 준비되면 연결할게!');
+}
+
+function renderUpdates(){
+ document.getElementById('allUpdates').innerHTML=
+ updates.map(updateCard).join('');
+}
+
+function hideInstallGuide(){
+ document.getElementById('installGuide').classList.remove('show');
+}
+
+function showInstallGuide(message){
+ document.getElementById('installText').textContent=message;
+ document.getElementById('installGuide').classList.add('show');
+}
+
+let deferredPrompt=null;
+
+window.addEventListener('beforeinstallprompt',event=>{
+ event.preventDefault();
+ deferredPrompt=event;
+});
+
+window.addEventListener('appinstalled',()=>{
+ deferredPrompt=null;
+});
+
+function installApp(){
+ if(deferredPrompt){
+  deferredPrompt.prompt();
+  deferredPrompt=null;
+ }else if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+  showInstallGuide('Safari에서 공유 버튼을 누른 다음 홈 화면에 추가를 선택해 줘.');
+ }else{
+  showInstallGuide('브라우저 메뉴에서 앱 설치 또는 홈 화면에 추가를 선택해 줘.');
+ }
+}
+
+renderHome();
+renderProjects();
+renderFavorites();
+renderUpdates();
+
+if('serviceWorker' in navigator){
+ window.addEventListener('load',()=>{
+  navigator.serviceWorker.register('./service-worker.js',{scope:'./'})
+   .catch(error=>console.error('SW registration failed:',error));
+ });
+}
+</script>
+</body>
+</html>
