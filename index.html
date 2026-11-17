@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="description" content="ANYWAY Studio — A collection of projects, experiments and stories.">
+<meta name="description" content="ANYWAY Studio — Projects, experiments and stories.">
 <link rel="manifest" href="./manifest.json">
 <link rel="apple-touch-icon" href="./logo.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,7 +22,6 @@
  --muted:#858585;
  --line:#E6E6E6;
  --soft:#F4F4F2;
- --black:#111111;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -89,7 +88,6 @@ main{padding:0 23px}
  position:relative;z-index:1;
 }
 
-/* WEB HUB */
 .hub-card{
  display:flex;align-items:center;justify-content:space-between;
  padding:22px;margin-top:12px;
@@ -98,9 +96,7 @@ main{padding:0 23px}
  transition:background .2s;
 }
 .hub-card:active{background:#EAEAE7}
-.hub-card h2{
- font-size:22px;letter-spacing:-1px;margin:12px 0 6px;
-}
+.hub-card h2{font-size:22px;letter-spacing:-1px;margin:12px 0 6px}
 .hub-card p{font-size:10px;color:#777;margin:0;line-height:1.7}
 .hub-arrow{font-size:25px}
 
@@ -109,61 +105,6 @@ main{padding:0 23px}
  margin:39px 0 16px;
 }
 .section-head h3{margin:0;font-size:18px;letter-spacing:-.7px}
-.section-head button{border:0;background:none;font-size:9px;letter-spacing:1px;color:#777;padding:5px 0}
-
-.project-list{display:grid;gap:0}
-.project{
- display:flex;align-items:center;gap:13px;
- padding:16px 0;border-bottom:1px solid var(--line);min-width:0;
-}
-.project-icon{
- width:48px;height:48px;flex-shrink:0;
- background:var(--soft);display:grid;place-items:center;
- font-size:20px;font-weight:700;color:#111;
-}
-.project-info{flex:1;min-width:0}
-.project-info h4{font-size:13px;margin:0 0 5px;font-weight:700}
-.project-info p{
- font-size:10px;color:#888;margin:0;
- overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
-.project-meta{font-size:8px;color:#999;margin-top:8px;letter-spacing:1px}
-.project-actions{display:flex;align-items:center;gap:7px}
-.open{
- background:#111;color:white;border:1px solid #111;
- padding:9px 11px;font-size:9px;letter-spacing:.5px;white-space:nowrap;
-}
-.open.soon{background:white;color:#888;border-color:#DDD}
-.favorite{border:0;background:none;color:#999;font-size:19px;padding:4px}
-.favorite.on{color:#111}
-
-.search{
- width:100%;height:46px;border:1px solid var(--line);
- background:#FAFAFA;padding:0 15px;outline:none;
- font-size:12px;margin:10px 0 16px;
-}
-.search:focus{border-color:#111}
-.filters{display:flex;gap:7px;overflow:auto;padding-bottom:17px;scrollbar-width:none}
-.filters::-webkit-scrollbar{display:none}
-.filter{
- background:white;border:1px solid var(--line);
- color:#777;padding:9px 15px;font-size:9px;letter-spacing:1px;white-space:nowrap;
-}
-.filter.active{background:#111;color:white;border-color:#111}
-
-.comic-box{border:1px solid var(--line);padding:18px;margin-top:10px}
-.comic-art{
- width:100%;height:190px;background:#F0F0ED;
- display:grid;place-items:center;margin-bottom:19px;
- color:#111;font-size:50px;font-weight:800;
-}
-.comic-box h3{font-size:20px;margin:12px 0 8px}
-.comic-box p{font-size:11px;line-height:1.9;color:#777}
-.comic-button{
- display:inline-block;background:#111;color:white;
- padding:12px 17px;font-size:9px;letter-spacing:1px;margin-top:9px;
-}
-
 .update{border-left:1px solid #DDD;margin:25px 0 25px 4px;padding:0 0 0 19px;position:relative}
 .update:before{
  content:"";position:absolute;left:-4px;top:3px;
@@ -172,6 +113,23 @@ main{padding:0 23px}
 .update time{font-size:9px;color:#999;letter-spacing:1px}
 .update h3{font-size:15px;margin:9px 0 7px}
 .update p{font-size:11px;color:#777;line-height:1.8;margin:0}
+
+.hub-message{
+ margin-top:10px;padding:27px 22px;
+ border:1px solid var(--line);
+}
+.hub-message h2{
+ font-size:23px;letter-spacing:-1px;margin:14px 0 9px;
+}
+.hub-message p{
+ color:#777;font-size:11px;line-height:1.9;margin:0;
+}
+.hub-link{
+ display:inline-block;background:#111;color:#fff;
+ padding:13px 18px;margin-top:20px;
+ font-size:9px;font-weight:700;letter-spacing:1px;
+}
+
 .empty{text-align:center;padding:45px 10px;color:#999;font-size:11px;line-height:2}
 
 footer{
@@ -231,25 +189,17 @@ footer{
   <button onclick="openProject('theme')">EXPLORE PROJECT ↗</button>
  </div>
 
- <!-- WEB HUB SHORTCUT -->
  <a href="https://gamchigam-afk.github.io/web-hub/" class="hub-card">
   <div>
    <div class="eyebrow">ANYWAY PROJECT DIRECTORY</div>
    <h2>WEB HUB ↗</h2>
-   <p>Explore all Anyway web projects in one place.</p>
+   <p>Explore all Anyway projects in one place.</p>
   </div>
   <span class="hub-arrow">↗</span>
  </a>
 
  <div class="section-head">
-  <h3>Selected Works</h3>
-  <button onclick="navigate('projects')">VIEW ALL ↗</button>
- </div>
- <div class="project-list" id="homeProjects"></div>
-
- <div class="section-head">
   <h3>Latest Updates</h3>
-  <button onclick="navigate('updates')">ALL UPDATES ↗</button>
  </div>
  <div id="homeUpdates"></div>
 </section>
@@ -259,19 +209,20 @@ footer{
  <div class="hero hero-small">
   <div class="eyebrow">THE COLLECTION</div>
   <h1>Our<br><span>Projects.</span></h1>
-  <p>Everything created and developed<br>by Anyway Studio.</p>
+  <p>Explore all projects created by Anyway Studio.</p>
  </div>
 
- <input class="search" id="search" placeholder="⌕  Search projects..." oninput="renderProjects()">
-
- <div class="filters">
-  <button class="filter active" onclick="setFilter('all',this)">ALL</button>
-  <button class="filter" onclick="setFilter('game',this)">GAMES</button>
-  <button class="filter" onclick="setFilter('tool',this)">TOOLS</button>
-  <button class="filter" onclick="setFilter('other',this)">OTHERS</button>
+ <div class="hub-message">
+  <div class="eyebrow">PROJECT DIRECTORY</div>
+  <h2>Find all projects<br>at WEB HUB.</h2>
+  <p>
+   모든 프로젝트의 목록과 상세 정보는<br>
+   WEB HUB에서 확인할 수 있습니다.
+  </p>
+  <a class="hub-link" href="https://gamchigam-afk.github.io/web-hub/">
+   OPEN WEB HUB ↗
+  </a>
  </div>
-
- <div class="project-list" id="allProjects"></div>
 </section>
 
 <!-- COMICS -->
@@ -279,18 +230,12 @@ footer{
  <div class="hero hero-small">
   <div class="eyebrow">ANYWAY ORIGINALS</div>
   <h1>Anyway<br><span>Comics.</span></h1>
-  <p>Original characters and stories<br>from Anyway Studio.</p>
  </div>
 
- <div class="comic-box">
-  <div class="comic-art">A.</div>
-  <div class="eyebrow">ORIGINAL COMICS</div>
-  <h3>ANYWAY COMICS</h3>
-  <p>
-   배고파와 모찌고파의 이야기.<br>
-   언어에 상관없이 누구나 그림으로 즐길 수 있는 오리지널 만화.
-  </p>
-  <a class="comic-button" href="https://gamchigam-afk.github.io/Anyway-comics/">
+ <div class="hub-message">
+  <div class="eyebrow">COMICS ARCHIVE</div>
+  <h2>ANYWAY COMICS</h2>
+  <a class="hub-link" href="https://gamchigam-afk.github.io/Anyway-comics/">
    READ COMICS ↗
   </a>
  </div>
@@ -313,7 +258,11 @@ footer{
   <h1>Saved<br><span>Works.</span></h1>
   <p>Your favorite works from Anyway Studio.</p>
  </div>
- <div class="project-list" id="favoriteProjects"></div>
+ <div class="empty">
+  즐겨찾기는 WEB HUB에서 프로젝트를 확인해 주세요.
+  <br>
+  <a href="https://gamchigam-afk.github.io/web-hub/" class="hub-link">OPEN WEB HUB ↗</a>
+ </div>
 </section>
 
 <footer>
@@ -345,58 +294,9 @@ footer{
 <script>
 const projects = [
  {
-  id:'coin',
-  name:'CoinLab',
-  desc:'가상의 코인을 운용하는 시뮬레이션',
-  type:'tool',
-  icon:'₵',
-  status:'RELEASED',
-  url:'https://gamchigam-afk.github.io/coinlab/'
- },
- {
   id:'theme',
   name:'THEME RNG',
-  desc:'확률로 만나는 새로운 테마의 세계',
-  type:'game',
-  icon:'◈',
-  status:'BETA',
   url:'https://gamchigam-afk.github.io/THEME-RNG/'
- },
- {
-  id:'hub',
-  name:'WEB HUB',
-  desc:'Anyway 프로젝트 통합 허브',
-  type:'other',
-  icon:'⌘',
-  status:'RELEASED',
-  url:'https://gamchigam-afk.github.io/web-hub/'
- },
- {
-  id:'dungeon',
-  name:'1분 던전',
-  desc:'던전 탐험과 무기 제작 프로젝트',
-  type:'game',
-  icon:'01',
-  status:'IN DEVELOPMENT',
-  url:''
- },
- {
-  id:'gravity',
-  name:'Gravity Ball',
-  desc:'중력 기반의 게임 실험',
-  type:'game',
-  icon:'●',
-  status:'EXPERIMENT',
-  url:''
- },
- {
-  id:'comics',
-  name:'ANYWAY COMICS',
-  desc:'배고파와 모찌고파의 오리지널 코믹스',
-  type:'other',
-  icon:'✦',
-  status:'RELEASED',
-  url:'https://gamchigam-afk.github.io/Anyway-comics/'
  }
 ];
 
@@ -409,110 +309,26 @@ const updates = [
  {
   date:'COMICS',
   title:'ANYWAY COMICS',
-  description:'배고파와 모찌고파의 오리지널 코믹스 프로젝트.'
+  description:'ANYWAY COMICS 페이지가 연결되었습니다.'
+ },
+ {
+  date:'WEB HUB',
+  title:'WEB HUB',
+  description:'프로젝트 전체 목록을 WEB HUB에서 확인할 수 있습니다.'
  }
 ];
 
-let filter='all';
-let favorites=[];
-
-try{
- favorites=JSON.parse(localStorage.getItem('anywayFavorites')||'[]');
- if(!Array.isArray(favorites))favorites=[];
-}catch(e){favorites=[]}
-
-function card(p){
- const saved=favorites.includes(p.id);
-
- return `
- <article class="project">
-  <div class="project-icon">${p.icon}</div>
-  <div class="project-info">
-   <h4>${p.name}</h4>
-   <p>${p.desc}</p>
-   <div class="project-meta">${p.status}</div>
-  </div>
-  <div class="project-actions">
-   <button class="favorite ${saved?'on':''}"
-    aria-label="즐겨찾기"
-    onclick="toggleFavorite('${p.id}')">
-    ${saved?'★':'☆'}
-   </button>
-   <button class="open ${p.url?'':'soon'}"
-    onclick="openProject('${p.id}')">
-    ${p.url?'OPEN ↗':'SOON'}
-   </button>
-  </div>
- </article>`;
-}
-
-function updateCard(u){
- return `
- <div class="update">
-  <time>${u.date}</time>
-  <h3>${u.title}</h3>
-  <p>${u.description}</p>
- </div>`;
-}
-
-function renderHome(){
- document.getElementById('homeProjects').innerHTML=
-  projects.slice(0,3).map(card).join('');
-
- document.getElementById('homeUpdates').innerHTML=
-  updates.slice(0,1).map(updateCard).join('');
-}
-
-function renderProjects(){
- const q=(document.getElementById('search').value||'').toLowerCase();
-
- const list=projects.filter(p=>
-  (filter==='all'||p.type===filter)&&
-  (p.name.toLowerCase().includes(q)||
-   p.desc.toLowerCase().includes(q))
- );
-
- document.getElementById('allProjects').innerHTML=
-  list.length?
-  list.map(card).join(''):
-  '<div class="empty">검색 결과가 없습니다.</div>';
-}
-
-function renderFavorites(){
- const list=projects.filter(p=>favorites.includes(p.id));
-
- document.getElementById('favoriteProjects').innerHTML=
-  list.length?
-  list.map(card).join(''):
-  '<div class="empty">아직 저장한 작품이 없습니다.<br>프로젝트 옆의 ☆를 눌러 저장해 보세요.</div>';
-}
-
 function renderUpdates(){
- document.getElementById('allUpdates').innerHTML=
-  updates.map(updateCard).join('');
-}
+ const html=updates.map(u=>`
+  <div class="update">
+   <time>${u.date}</time>
+   <h3>${u.title}</h3>
+   <p>${u.description}</p>
+  </div>
+ `).join('');
 
-function toggleFavorite(id){
- favorites=favorites.includes(id)?
-  favorites.filter(x=>x!==id):
-  [...favorites,id];
-
- try{
-  localStorage.setItem('anywayFavorites',JSON.stringify(favorites));
- }catch(e){}
-
- renderHome();
- renderProjects();
- renderFavorites();
-}
-
-function setFilter(value,btn){
- filter=value;
- document.querySelectorAll('.filter').forEach(x=>
-  x.classList.remove('active')
- );
- btn.classList.add('active');
- renderProjects();
+ document.getElementById('homeUpdates').innerHTML=html.slice(0,updates[0].length);
+ document.getElementById('allUpdates').innerHTML=html;
 }
 
 function showPage(id,btn){
@@ -527,7 +343,6 @@ function showPage(id,btn){
  btn.classList.add('active');
 
  window.scrollTo({top:0,behavior:'smooth'});
- renderFavorites();
 }
 
 function navigate(id){
@@ -538,16 +353,10 @@ function navigate(id){
 
 function openProject(id){
  const p=projects.find(x=>x.id===id);
- if(p?.url){
-  window.open(p.url,'_blank','noopener');
- }else{
-  alert('아직 공개되지 않은 프로젝트입니다.');
- }
+ if(p?.url)window.open(p.url,'_blank','noopener');
+ else alert('아직 공개되지 않은 프로젝트입니다.');
 }
 
-renderHome();
-renderProjects();
-renderFavorites();
 renderUpdates();
 
 if('serviceWorker' in navigator){
